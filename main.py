@@ -27,6 +27,6 @@ channel_5 = AnalogIn(mcp, MCP.P5)
 #print values from each channel every 10 seconds
 while True:
     for i in range(6):
-        print('Channel ' + i + ' Raw Value: ', eval("channel_" + str(i) +".value"))
-        print('Channel ' + i + ' ADC Voltage: ' + str(eval("channel_" + str(i) +".voltage")) + 'V')
+        print('Channel ' + str(i) + ' Raw Value: ', eval("channel_" + str(i) +".value"))
+        print('Channel ' + str(i) + ' ADC Voltage: ' + str(eval("channel_" + str(i) +".voltage")) + 'V')
     time.sleep(10)
