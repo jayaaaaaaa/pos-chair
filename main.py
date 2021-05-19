@@ -30,3 +30,4 @@ while True:
         print('Channel ' + str(i) + ' Raw Value: ', eval("channel_" + str(i) +".value"))
         print('Channel ' + str(i) + ' ADC Voltage: ' + str(eval("channel_" + str(i) +".voltage")) + 'V')
     time.sleep(10)
+    print('------------------')
