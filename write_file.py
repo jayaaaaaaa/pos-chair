@@ -27,7 +27,7 @@ channel_4 = AnalogIn(mcp, MCP.P4)
 #channel_5 = AnalogIn(mcp, MCP.P5)
 
 
-i = 3509
+i = 10376
 
 #writing data to csv file
 while True:
@@ -35,7 +35,7 @@ while True:
         poschair_writer = csv.writer(poschair_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
         datetime_obj = datetime.now()
         poschair_writer.writerow([i, datetime_obj,"Ch0", channel_0.value, channel_0.voltage, "Ch1",  channel_1.value, channel_1.voltage,
-"Ch2",  channel_2.value, channel_2.voltage, "Ch3", channel_3.value, channel_3.voltage, "Ch4", channel_4.value, channel_4.voltage, "lean backward"])
+"Ch2",  channel_2.value, channel_2.voltage, "Ch3", channel_3.value, channel_3.voltage, "Ch4", channel_4.value, channel_4.voltage, "correct"])
         print(i, datetime_obj, channel_0.value, channel_0.voltage, channel_1.value, channel_1.voltage, channel_2.value, channel_2.voltage, channel_3.value, channel_3.voltage, channel_4.value, channel_4.voltage)
         #print('Written row ' + str(i) + ' on ' + str(datetime_obj))
         time.sleep(1)
