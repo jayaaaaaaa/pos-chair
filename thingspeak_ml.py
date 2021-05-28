@@ -4,7 +4,7 @@ import tree_model
 from urllib.request import urlopen
 import sys
 
-WRITE_API = 'AUBE7IRHIFKUN4RZ'  # PUT YOUR WRITE KEY HERE
+WRITE_API = 'JGTYQTHNGJOWNIFY'  # PUT YOUR WRITE KEY HERE
 BASE_URL = 'https://api.thingspeak.com/update?api_key={}'.format(WRITE_API)
 
 SensorPrevSec = 0

@@ -56,9 +56,9 @@ predictions = dtc.predict(X_test)
 # recall = recall_score(y_true=y_test,y_pred=predictions, average='micro')
 # print("Recall:", recall)
 
+count = 1
 
 def dtc_output():
-    count = 1
     while count:
         ch0_value = round(main2.poschair()[0],2)
         ch1_value = round(main2.poschair()[2],2)
