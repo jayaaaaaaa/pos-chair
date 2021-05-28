@@ -16,13 +16,13 @@ try:
     while True:
         if time() - SensorPrevSec > SensorInterval:
             SensorPrevSec = time()
-            posture = tree_output
+            posture = round(tree_model.dtc_output(),2)
             print('result: ', posture)
 
         if time() - ThingSpeakPrevSec > ThingSpeakInterval:
             ThingSpeakPrevSec = time()
 
-            thingspeakHttp = BASE_URL + '&field1' + str(posture)
+            thingspeakHttp = BASE_URL + '&field1=' +str(posture)
             print(thingspeakHttp)
 
             conn = urlopen(thingspeakHttp)

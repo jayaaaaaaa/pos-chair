@@ -7,6 +7,7 @@ from sklearn.model_selection import train_test_split, cross_val_score, Stratifie
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.feature_selection import SelectKBest, chi2
 from sklearn.model_selection import GridSearchCV
+from sklearn.preprocessing import LabelEncoder
 import main2
 from time import sleep
 # import pickle
@@ -15,6 +16,8 @@ df = pd.read_csv("final_data.csv")
 X = df.iloc[:,[3,6,9,12,15]]
 # print(X.head())
 y = df.iloc[:,-1]
+encoder = LabelEncoder()
+y = encoder.fit_transform(y.values)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.7)
 
 dtc = DecisionTreeClassifier()
@@ -56,9 +59,8 @@ predictions = dtc.predict(X_test)
 # recall = recall_score(y_true=y_test,y_pred=predictions, average='micro')
 # print("Recall:", recall)
 
-count = 1
-
 def dtc_output():
+    count = 1
     while count:
         ch0_value = round(main2.poschair()[0],2)
         ch1_value = round(main2.poschair()[2],2)
@@ -71,7 +73,9 @@ def dtc_output():
         result = dtc.predict(X_new)
         sleep(5)
         print(result)
-        return result
+        a = encoder.inverse_transform(result)
+        print(a)
+        return result[0]
 
 
-tree_output = dtc_output()
+# tree_output = dtc_output()
