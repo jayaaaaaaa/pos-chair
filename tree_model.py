@@ -56,17 +56,22 @@ predictions = dtc.predict(X_test)
 # recall = recall_score(y_true=y_test,y_pred=predictions, average='micro')
 # print("Recall:", recall)
 
-count = 1
 
-while count:
-    ch0_value = round(main2.poschair()[0],2)
-    ch1_value = round(main2.poschair()[2],2)
-    ch2_value = round(main2.poschair()[4],2)
-    ch3_value = round(main2.poschair()[6],2)
-    ch4_value = round(main2.poschair()[8],2)
+def dtc_output():
+    count = 1
+    while count:
+        ch0_value = round(main2.poschair()[0],2)
+        ch1_value = round(main2.poschair()[2],2)
+        ch2_value = round(main2.poschair()[4],2)
+        ch3_value = round(main2.poschair()[6],2)
+        ch4_value = round(main2.poschair()[8],2)
 
-    X_new = pd.DataFrame([[ch0_value, ch1_value, ch2_value, ch3_value, ch4_value]])
-    # print(X_new)
-    result = dtc.predict(X_new)
-    sleep(5)
-    print(result)
+        X_new = pd.DataFrame([[ch0_value, ch1_value, ch2_value, ch3_value, ch4_value]])
+        # print(X_new)
+        result = dtc.predict(X_new)
+        sleep(5)
+        print(result)
+        return result
+
+
+tree_output = dtc_output()
