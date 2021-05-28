@@ -1,35 +1,40 @@
-import thingspeak
-import time
+from time import time, sleep
 import main2
+from urllib.request import urlopen
+import sys
  
-channel_id = 1396689 # PUT CHANNEL ID HERE
-write_key  = 'AUBE7IRHIFKUN4RZ' # PUT YOUR WRITE KEY HERE
-read_key   = 'T7GY095DRE310JYK' # PUT YOUR READ KEY HERE
+WRITE_API  = 'AUBE7IRHIFKUN4RZ' # PUT YOUR WRITE KEY HERE
+BASE_URL = 'https://api.thingspeak.com/update?api_key={}'.format(WRITE_API)
+
+SensorPrevSec = 0
+SensorInterval = 16 # print data every 16 seconds
+ThingSpeakPrevSec = 0
+ThingSpeakInterval = 16 # send to Thingspeak every 16 seconds
  
-def measure(channel):
-    try:
-        timenow = float(time.time())
-        ch0_value = round(main2.poschair()[0],2)
-        ch1_value = round(main2.poschair()[2],2)
-        ch2_value = round(main2.poschair()[4],2)
-        ch3_value = round(main2.poschair()[6],2)
-        ch4_value = round(main2.poschair()[8],2)
-        ch5_value = round(main2.poschair()[10],2)
-        # write
-        response = channel.update({'ch0_value': ch0_value, 'ch1_value': ch1_value,
-        'ch2_value': ch2_value, 'ch3_value': ch3_value,
-        'ch4_value': ch4_value, 'ch5_value': ch5_value,})
-        
-        # read
-        read = channel.get({})
-        print("Read:", read)
-        
-    except:
-        print("connection failed")
- 
-if __name__ == "__main__":
-    channel = thingspeak.Channel(id=channel_id, write_key=write_key, api_key=read_key)
+try:
     while True:
-        measure(channel)
-        # free account has an api limit of 15sec
-        time.sleep(15)
+        if time() - SensorPrevSec > SensorInterval:
+            SensorPrevSec = time()
+            ch0_value = round(main2.poschair()[0],2)
+            ch1_value = round(main2.poschair()[2],2)
+            ch2_value = round(main2.poschair()[4],2)
+            ch3_value = round(main2.poschair()[6],2)
+            ch4_value = round(main2.poschair()[8],2)
+            print('ch0:', ch0_value, '     ch1:', ch1_value)
+            print('ch2:', ch2_value, '     ch3:', ch3_value)
+            print('ch4:', ch4_value)
+        
+        if time() - ThingSpeakPrevSec > ThingSpeakInterval:
+            ThingSpeakPrevSec = time()
+            
+            thingspeakHttp = BASE_URL + '&field1' + str(ch0_value) + '&field2' + str(ch1_value) + '&field3' + str(ch2_value) + '&field4' + str(ch3_value)+ '&field5' + str(ch4_value)                      
+            print(thingspeakHttp)
+            
+            conn = urlopen(thingspeakHttp)
+            print('Response: {}'.format(conn.read()))
+            conn.close()
+            
+            sleep(1)
+
+except KeyboardInterrupt:
+    conn.close()

@@ -22,7 +22,6 @@ channel_1 = AnalogIn(mcp, MCP.P1)
 channel_2 = AnalogIn(mcp, MCP.P2)
 channel_3 = AnalogIn(mcp, MCP.P3)
 channel_4 = AnalogIn(mcp, MCP.P4)
-channel_5 = AnalogIn(mcp, MCP.P5)
 
 #print values from each channel every 1 second
 def poschair():
@@ -36,6 +35,4 @@ def poschair():
     ch3_voltage = channel_3.voltage
     ch4_value = channel_4.value
     ch4_voltage = channel_4.voltage
-    ch5_value = channel_5.value
-    ch5_voltage = channel_5.voltage
-    return ch0_value, ch0_voltage, ch1_value, ch1_voltage, ch2_value, ch2_voltage, ch3_value, ch3_voltage, ch4_value, ch4_voltage, ch5_value, ch5_voltage
+    return ch0_value, ch0_voltage, ch1_value, ch1_voltage, ch2_value, ch2_voltage, ch3_value, ch3_voltage, ch4_value, ch4_voltage
