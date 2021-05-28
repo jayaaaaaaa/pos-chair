@@ -31,7 +31,7 @@ i = 10376
 
 #writing data to csv file
 while True:
-    with open('poschair.csv', mode='a') as poschair_file:
+    with open('archive/poschair.csv', mode='a') as poschair_file:
         poschair_writer = csv.writer(poschair_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
         datetime_obj = datetime.now()
         poschair_writer.writerow([i, datetime_obj,"Ch0", channel_0.value, channel_0.voltage, "Ch1",  channel_1.value, channel_1.voltage,

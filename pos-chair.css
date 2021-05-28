@@ -1,0 +1,64 @@
+body {
+    background: no-repeat fixed center;
+    background-size: 100% 100%;
+    background-color: #ccc;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: whitesmoke;
+}
+
+.wrapper {
+    padding: 0em 0em;
+    height: max-content;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+}
+
+.credits {
+    position: absolute;
+    padding: 1em;
+    bottom: 0;
+    color: whitesmoke;
+}
+
+a, a:hover, a:visited {
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+#posture {
+    display: block;
+    font-size: 2.5em;
+    line-height: 1.3em;
+    text-align: center;
+    padding: 1em;   
+}
+
+#date {
+    display: block;
+    font-size: 1.5em;
+    text-align: center;
+    padding: 1em;
+}
+
+@media screen and (max-width: 600px) {
+    body {
+        background-size: auto 100%;
+    }
+    .wrapper {
+        width: 100%;
+    }
+    #posture {
+        font-size: 2.5em;
+    }
+    #date {
+        font-size: 1em;
+    }
+}
