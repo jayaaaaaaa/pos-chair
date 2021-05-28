@@ -11,7 +11,7 @@ import main2
 from time import sleep
 # import pickle
 
-df = pd.read_csv("/home/pi/Adafruit_Python_DHT/pos-chair/Final data.csv")
+df = pd.read_csv("final_data.csv")
 X = df.iloc[:,[3,6,9,12,15]]
 # print(X.head())
 y = df.iloc[:,-1]
