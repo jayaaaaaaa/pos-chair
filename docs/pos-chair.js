@@ -29,7 +29,7 @@ function DisplayPosture(output) {
     const postureResult = document.getElementById("posture");
     switch(output) {
         case '0':
-            text = "Correct Posture"
+            text = "Correct!"
             ChangeToGreen();
             break;
         case '1':
@@ -41,11 +41,11 @@ function DisplayPosture(output) {
             ChangeToRed();
             break;
         case '3':
-            text = "A little bit imbalanced. You may be leaning on your left side."
+            text = "Are you leaning on your left?"
             ChangeToRed();
             break;
         case '4':
-            text = "Are you leaning on your right? Try sitting with your weight equal on both sides."
+            text = "Are you leaning on your right?"
             ChangeToRed();
             break;
         default:
