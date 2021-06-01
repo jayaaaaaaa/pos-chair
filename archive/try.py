@@ -4,7 +4,7 @@ import time
 from google.cloud import pubsub_v1
 
 # TODO(developer)
-project_id = "polar-caldron-313623"
+project_id = ""
 topic_id = "poschairdata"
 
 publisher = pubsub_v1.PublisherClient()
